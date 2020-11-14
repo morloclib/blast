@@ -1,0 +1,11 @@
+name: ncbi-blast
+version: 0.0.0
+homepage: https://github.com/morloclib/ncbi-blast
+synopsis: A wrapper around the NCBI BLAST program
+description: Lots of detail about all this
+category: algorithms
+license: MIT
+author: "Zebulun Arendsee"
+maintainer: "zbwrnz@gmail.com"
+github: https://github.com/morloclib/ncbi-blast
+bug-reports: https://github.com/morloclib/ncbi-blast

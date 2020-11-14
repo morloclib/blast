@@ -1,0 +1,61 @@
+module blast {
+
+source py from "core.hpp" (
+   "mlc_makeblastdb" as makeblastdb
+ , "mlc_blastp" as blastp
+ , "mlc_blastn" as blastn
+ , "mlc_blastx" as blastx
+ , "mlc_tblastn" as tblastn
+)
+
+export blastp
+export blastn
+export blastx
+export tblastn
+export makeblastdb
+
+export BlastResult
+
+type py Str = "str"
+
+type (Bioseq a) = [(a, Str)]
+type py (Bioseq a) = [(a, Str)]
+
+type DnaSeq = Str
+type py DnaSeq = Str
+
+type AaSeq = Str
+type py AaSeq = Str
+
+type (BlastDB a) = Str
+type py (BlastDB a) = Str
+
+type Filename = Str
+type py Filename = Str
+
+type Path = [Filename]
+type py Path = [Filename]
+
+table BlastOutput6 = BlastOutput6
+  { qaccver  :: Str
+  , saccver  :: Str
+  , pident   :: Num
+  , length   :: Int
+  , mismatch :: Int
+  , gapopen  :: Int
+  , qstart   :: Int
+  , qend     :: Int
+  , sstart   :: Int
+  , send     :: Int
+  , evalue   :: Num
+  , bitscore :: Num
+  }
+
+makeblastdb :: Bioseq Str -> Filename -> ();
+
+blastp  :: BlastDB AaSeq  -> [Str] -> Bioseq AaSeq  -> BlastOutput6;
+blastn  :: BlastDB DnaSeq -> [Str] -> Bioseq DnaSeq -> BlastOutput6;
+blastx  :: BlastDB AaSeq  -> [Str] -> Bioseq DnaSeq -> BlastOutput6;
+tblastn :: BlastDB DnaSeq -> [Str] -> Bioseq AaSeq  -> BlastOutput6;
+
+}
